@@ -1,0 +1,23 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: wx-service
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+wx:
+  appid: wx77cdf7f9d24a1cae
+  secret: 2f60f0d77c4cd67a8a619e90d94fdc29
+  baseurl: https://api.weixin.qq.com
+logging:
+  level:
+    cn:
+      liangyt:
+        wx:
+          service:
+            WeixinService: DEBUG
+

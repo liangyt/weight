@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liangyt.business.mapper.RecordMapper">
+  <resultMap id="BaseResultMap" type="cn.liangyt.business.model.Record">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="date" jdbcType="DATE" property="date" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.liangyt.business.model.Record">
+    insert into record (id, open_id, weight, 
+      date, create_time)
+    values (#{id,jdbcType=BIGINT}, #{openId,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, 
+      #{date,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.liangyt.business.model.Record">
+    update record
+    set open_id = #{openId,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=DECIMAL},
+      date = #{date,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, open_id, weight, date, create_time
+    from record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, open_id, weight, date, create_time
+    from record
+  </select>
+
+  <select id="selectWithOpenIdAndDate" resultMap="BaseResultMap">
+    select id, open_id, weight, date, create_time
+    from record where open_id = #{openId} and date = #{date}
+  </select>
+
+  <select id="fetchForPage" resultMap="BaseResultMap">
+    select id, open_id, weight, date, create_time
+    from record where open_id = #{openId}
+    order by create_time
+  </select>
+
+</mapper>

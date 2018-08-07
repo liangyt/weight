@@ -1,0 +1,33 @@
+server:
+  port: 8811
+spring:
+  application:
+    name: business-service
+  datasource:
+    url: jdbc:mysql://localhost/weight_business?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+mybatis:
+  type-aliases-package: cn.liangyt.business.mapper
+  mapper-locations: mybatis/**/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 3000
+custom:
+  info:
+    idc: 1
+    machineId: 1
