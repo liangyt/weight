@@ -13,13 +13,26 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true # 打开 feign的Hystrix
 hystrix:
   command:
     default:
-      execution:
+      fallback:
         isolation:
+          semaphore:
+            maxConcurrentRequests: 10 # 执行回退方法最大并发数 默认 10
+      circuitBreaker:
+        sleepWindowInMilliseconds: 3000 # 断路器打开后的体眠时间，默认 5000 毫秒
+      execution:
+        timeout:
+          enabled: true # 配置HystrixCommand.run()的执行是否启用超时时间(默认true),设置为false则timeoutInMilliseconds无效
+        isolation:
+          semaphore:
+            maxConcurrentRequests: 10 # 最大并发数，默认为 10
           thread:
-            timeoutInMilliseconds: 60000
+            timeoutInMilliseconds: 60000 # 配置HystrixCommand执行的超时时间(毫秒，默认 1000毫秒), 执行超过该值后被标记为TIMEOUT并进入服务降级
 mybatis:
   type-aliases-package: cn.liangyt.base.mapper
   mapper-locations: mybatis/**/*Mapper.xml

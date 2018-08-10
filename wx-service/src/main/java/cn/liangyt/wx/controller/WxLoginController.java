@@ -31,7 +31,6 @@ public class WxLoginController {
      */
     @GetMapping("/api/openid")
     public ResultVO getOpenIdByCode(String code) {
-        String url = String.format(WxUrl.FETCH_OPENID_USER, wxInfo.getAppid(), wxInfo.getSecret(), code);
         String result = weixinService.login(wxInfo.getAppid(), wxInfo.getSecret(), code, "authorization_code");
         WxUserInfo info = JacksonUtil.jsonToObject(result, WxUserInfo.class);
         return ResultVO.succeeWithData(info.getOpenid());
