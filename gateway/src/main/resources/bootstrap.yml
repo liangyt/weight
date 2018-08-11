@@ -1,0 +1,22 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      profile: test # profile 如： gateway-test.yml
+      label: master # 分支
+#      uri: http://localhost:7001/  # 这种方式是没有通过服务发现的方式处理，即 config-server 独立部署没有注册到Eureka
+      discovery:
+        enabled: true
+        service-id: config-server # 这种方式是通过注册中心发现配置服务
+      fail-fast: true # 启用快速失败，如果启动的时候配置服务失败则直接失败
+      retry:
+        multiplier: 1000 # 初始重试时间间隔 默认1000毫秒
+        initial-interval: 1.1  # 下一个重试间隔的乘数 1000 * 1.1 默认 1.1
+        max-interval: 2000 # 最大重试间隔 默认2000 毫秒

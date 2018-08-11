@@ -1,0 +1,19 @@
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.liangyongtong.cn/r/weight.git
+          search-paths: '{application}'
+          username: lyt
+          password: 123456

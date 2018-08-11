@@ -17,6 +17,7 @@
         <module>common-identity</module>
         <module>wx-service</module>
         <module>hystrix-dashboard</module>
+        <module>config-server</module>
     </modules>
 
     <parent>
