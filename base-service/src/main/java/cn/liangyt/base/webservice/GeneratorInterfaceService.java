@@ -25,6 +25,9 @@ public interface GeneratorInterfaceService {
         // 发号器服务不可用的时候使用该方式生成
         @Override
         public Long id(int idc, int machineId) {
+
+            System.out.println(idc + ":" + machineId);
+
             return System.currentTimeMillis() + idc + machineId;
         }
     }

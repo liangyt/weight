@@ -9,6 +9,11 @@ eureka:
 spring:
   application:
     name: config-server
+  rabbitmq:
+        host: 39.105.100.16
+        port: 5672
+        username: weight
+        password: weight
   cloud:
     config:
       server:
@@ -17,3 +22,6 @@ spring:
           search-paths: '{application}'
           username: lyt
           password: 123456
+management:
+  security:
+    enabled: false # 关闭安全认证

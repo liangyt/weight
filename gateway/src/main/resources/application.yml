@@ -1,6 +1,11 @@
 server:
   port: 9101
-#spring:
+spring:
+  rabbitmq:
+      host: 39.105.100.16
+      port: 5672
+      username: weight
+      password: weight
 #  application:
 #    name: gateway
 #eureka:

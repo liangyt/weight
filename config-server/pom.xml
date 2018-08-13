@@ -20,5 +20,17 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
+
+        <!-- 监视 刷新端点等 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 还需要有 spring-boot-starter-actuator (必须，刷新端点) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
     </dependencies>
 </project>

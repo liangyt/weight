@@ -1,8 +1,13 @@
 server:
   port: 8801
 spring:
-  application:
-    name: base-service
+#  application:
+#    name: base-service
+  rabbitmq:
+    host: 39.105.100.16
+    port: 5672
+    username: weight
+    password: weight
   datasource:
     url: jdbc:mysql://localhost/weight_base?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username: root
@@ -40,7 +45,7 @@ mybatis:
     map-underscore-to-camel-case: true
     default-fetch-size: 100
     default-statement-timeout: 3000
-custom:
-  info:
-    idc: 0
-    machineId: 0
+#custom:
+#  info:
+#    idc: 0
+#    machineId: 0
