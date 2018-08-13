@@ -17,6 +17,6 @@ spring:
         service-id: config-server # 这种方式是通过注册中心发现配置服务
       fail-fast: true # 启用快速失败，如果启动的时候配置服务失败则直接失败
       retry:
-        multiplier: 1000 # 初始重试时间间隔 默认1000毫秒
-        initial-interval: 1.1  # 下一个重试间隔的乘数 1000 * 1.1 默认 1.1
+        initial-interval: 1000 # 初始重试时间间隔 默认1000毫秒
+        multiplier: 1.1  # 下一个重试间隔的乘数 1000 * 1.1 默认 1.1
         max-interval: 2000 # 最大重试间隔 默认2000 毫秒
